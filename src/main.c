@@ -63,6 +63,9 @@ int main(void)
 		printk("Set up button at %s pin %d\r\n", buttons[i].port->name, buttons[i].pin);
 	}
 
+	// by default, set Simon disabled
+	shell_set_simon(DISABLED);
+
 	while (1) {
 		for( int i = 0; i < leds_total; i++ ) {	
 			ret = led_ON(&leds[i]);
