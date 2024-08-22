@@ -67,17 +67,29 @@ int main(void)
 	shell_set_simon(DISABLED);
 
 	while (1) {
-		for( int i = 0; i < leds_total; i++ ) {	
-			ret = led_ON(&leds[i]);
-      if (ret < 0) {
-        return 0;
-      }
-      k_msleep(SLEEP_TIME_MS);
-			ret = led_OFF(&leds[i]);
-      if (ret < 0) {
-        return 0;
-      }
-      k_msleep(SLEEP_TIME_MS);
+		if (ENABLED == shell_is_simon_enabled())
+		{
+			// Simon says behavior starts here
+			for( int i = 0; i < leds_total; i++ ) {	
+				ret = led_ON(&leds[i]);
+				if (ret < 0) {
+					return 0;
+				}
+
+				k_msleep(SLEEP_TIME_MS);
+				
+				ret = led_OFF(&leds[i]);
+				if (ret < 0) {
+					return 0;
+				}
+
+				k_msleep(SLEEP_TIME_MS);
+			}
+		}
+		else
+		{
+			// Simon says is disabled, go to delay
+			k_msleep(SLEEP_TIME_MS);
 		}
 	}
 	return 0;
