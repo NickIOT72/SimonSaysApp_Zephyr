@@ -16,12 +16,12 @@ simon_says_opt_t shell_is_simon_enabled(void)
 
 static int shell_cmd_simon_enable_handler(const struct shell *shell, size_t argc, char **argv)
 {
-	if ( argc != MINIMUM_MANDATORY_ENABLE_OPTIONS ){
-		shell_print(shell, "There must be 1 input (1 or 0). Try again.");
+	if (argc != 2 || (argv[1][0] != '0' && argv[1][0] != '1') || argv[1][1] != '\0') {
+		shell_print(shell, "Invalid Input. Use 1 to enable or 0 to disable.");
 		return -1;
 	}
 
-	const simon_says_opt_t NEW_STATE = atoi(argv[1]) == 1 ? ENABLED : DISABLED;
+	const simon_says_opt_t NEW_STATE = argv[1][0] == '1' ? ENABLED : DISABLED;
 	shell_set_simon(NEW_STATE);
 	shell_print(shell, "Simon Says %s.", NEW_STATE == ENABLED ? "Enabled" : "Disabled");
 
