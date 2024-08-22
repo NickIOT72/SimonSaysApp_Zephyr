@@ -7,11 +7,13 @@ project(SimonSays)
 target_sources(app PRIVATE
     src/main.c
     src/modules/led/led.c
-    src/modules/button/button.c)
+    src/modules/button/button.c
+    src/modules/shell/shell.c)
 # Add include paths
 target_include_directories(app PRIVATE
     # Add user defined include pathss
     src
     src/modules/led
     src/modules/button
+    src/modules/shell
 )
