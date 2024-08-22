@@ -2,6 +2,17 @@
 
 LOG_MODULE_REGISTER(app);
 
+Simon_t simon;
+
+void shell_set_simon(simon_says_opt_t opt)
+{
+	simon.user_opt = opt;
+}
+
+simon_says_opt_t shell_is_simon_enabled(void)
+{
+	return simon.user_opt;
+}
 
 SHELL_CMD_ARG_REGISTER(simon_enable, 
 	NULL, 
