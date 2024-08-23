@@ -19,7 +19,7 @@ void button_pressed(const struct device *dev, struct gpio_callback *cb, uint32_t
 	}
 	if( bit_to_pin == 0 ) return;
 
-	printk("pin %d interrupted at %" PRIu32 "\n", bit_to_pin, k_uptime_get()); 
+	printk("pin %d interrupted at %llu\n", bit_to_pin, k_uptime_get());
 }
 
 int button_setUpInterruption( const struct gpio_dt_spec *btn , const gpio_flags_t pin_flag, struct gpio_callback *btn_cb_data  )
