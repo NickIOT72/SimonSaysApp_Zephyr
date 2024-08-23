@@ -1,6 +1,7 @@
 #include <zephyr/kernel.h>
 #include "modules/led/led.h"
 #include "modules/button/button.h"
+#include "modules/shell/shell.h"
 
 /* The devicetree node identifier for the "led0" alias. */
 #define LED0_NODE DT_ALIAS(led0)
